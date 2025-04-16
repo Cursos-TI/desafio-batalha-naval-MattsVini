@@ -1,16 +1,19 @@
 #include <stdio.h>
 
 int main() {
-
+    
     int tabuleiro[10][10];
 
     char y = 'A';
     int x = 1;
 
+    //  Criando e definindo os limites dos navios.
     int navioVertical[3] = {3, 3, 3};
     int navioHorizontal[3] = {3, 3, 3};
+    int navioDiagonal1[3] = {3,3,3};
+    int navioDiagonal2[3] = {3,3,3};
 
-    //Colocando os zeros na matriz.
+    //Colocando os zeros para formar o tabuleiro.
     for(int i = 0; i < 10; i++){
         for(int j = 0; j < 10; j++){
 
@@ -24,13 +27,20 @@ int main() {
     }
 
     for(int i = 0, j = 6; i < 3; i++, j++){
-        tabuleiro[j][2] = navioHorizontal[i];
+        tabuleiro[j][4] = navioVertical[i];
     }
     //Espaçamento para organizar a saída de dados.
     printf("    ");
 
-
-    //Exibir o tabuleiro.
+    //navio na diagonal principal
+    for(int i = 0; i < 3; i ++){
+            tabuleiro[2 + i][2 + i] = navioDiagonal1[i];
+        }
+    //navio na diagonal secundária
+    for(int i = 0; i< 3; i ++){
+        tabuleiro[9-i][i] = navioDiagonal2[i];
+    }
+         //Exibir o tabuleiro.
     //coordenada y
     for(int i = 0; i < 10; i++){
         printf("%c ", y);
@@ -54,4 +64,6 @@ int main() {
     }
     printf("\n");
  }
-}
+    }
+
+   
